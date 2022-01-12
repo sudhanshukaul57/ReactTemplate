@@ -6,15 +6,43 @@ import {
     Form,
     Checkbox
   } from "semantic-ui-react"; 
+import axios from "axios";
 
 class LabelDetails extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            lf_index: []
+        }
     }
 
-    toggleCheckBox = (e) => {
+    toggleCheckBox = async (e) => {
+        console.log("event value is ", e.target.checked)
+        let value = parseInt(e.target.id)
+        let indexArray = this.state.lf_index
+        if(!e.target.checked){
+            let valueIndex = indexArray.indexOf(value)
+            if(valueIndex>-1){
+                indexArray.splice(valueIndex,1)
+            }
+        }else{
+            indexArray.push(value)
+        }
+        this.setState({
+            lf_index: indexArray
+        })
         console.log("Checkbox clicked ", e.target.id)
+        console.log("updated Index array is ", indexArray)
+
+        const endPoint = "http://127.0.0.1:5000/satlab/labelingfunctions"
+        const requestBody = {
+            "lf_index" : this.state.lf_index
+        }
+        const labelDetails = await axios.post(
+            endPoint, requestBody
+        )
+        console.log("Labels are updated")
     }
     render(){
         return (

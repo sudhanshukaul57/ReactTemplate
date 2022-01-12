@@ -5,13 +5,14 @@ import {
     Label,
     Input
   } from "semantic-ui-react"; 
+import axios from "axios";
 
 class FileSelection extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
-            searchValue: ""
+            path: ""
         }
     }
 
@@ -20,17 +21,22 @@ class FileSelection extends React.Component{
         console.log("data file", files)
     }
 
-    onFormSubmit = () =>{
-        console.log("Form submit clicked")
+    onPathSubmit =  async () =>{
+        const endPoint = "http://127.0.0.1:5000/satlab/load"
+        const requestBody = {
+            "path": this.state.searchValue
+        }
+        
+        const fileDetails = await axios.post(
+            endPoint, requestBody
+        )
+        console.log("Form submit clicked and updated path is ", this.state.path)
     }
 
     getInputValue = (event, {value}) => {
-        console.log("Search value is ", value)
         this.setState({
-          searchValue: value
+          path: value
         })
-
-        console.log("Search state value is ", this.state.searchValue)
     }
 
     render(){
@@ -49,7 +55,7 @@ class FileSelection extends React.Component{
                             <input type ="file" name="file" directory="" webkitdirectory="" onChange={(e) => this.onChange(e)}/>
                         </div> */}
                         <Grid.Column>
-                            <Button   onClick={this.onFormSubmit}>Submit</Button>   
+                            <Button   onClick={this.onPathSubmit}>Submit</Button>   
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
