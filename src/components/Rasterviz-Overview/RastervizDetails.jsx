@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
-    Grid
+    Grid,
+    Button
   } from "semantic-ui-react"; 
 import FileSelection from "../FilesBlock/FileSelection";
 import GraphDetails from "../GraphBlock/GraphDetails";
@@ -24,6 +25,9 @@ class RastervizDetails extends React.Component{
                     <Grid.Column>
                         <LabelDetails/>
                     </Grid.Column>
+                </Grid.Row>
+                <Grid.Row centered>
+                        <Button color="blue">Label Images</Button>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
