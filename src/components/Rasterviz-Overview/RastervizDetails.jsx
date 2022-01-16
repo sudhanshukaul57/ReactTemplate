@@ -14,19 +14,28 @@ class RastervizDetails extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            displayMap: false
+        }
     }
 
     submitLabels = async () =>{
         const endPoint = "http://127.0.0.1:5000/satlab/label"
         const requestBody = {}
-        const labelDetails = await axios.post(
-            endPoint, requestBody
-        )
+        // const labelDetails = await axios.post(
+        //     endPoint, requestBody
+        // )
         console.log("Submit button clicked")
+        this.setState({
+            displayMap: true
+        })
     }
     
     render(){
         return (
+            // <div>
+            //     <ImagesDetails/>
+            // </div>
             <Grid columns={2} divided block>
                 <Grid.Row>
                     <Grid.Column>
@@ -41,10 +50,10 @@ class RastervizDetails extends React.Component{
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
-                        <ImagesDetails/>
+                        {this.state.displayMap && <ImagesDetails/>}
                     </Grid.Column>
                     <Grid.Column>
-                        <GraphDetails/>
+                        {this.state.displayMap && <GraphDetails/>}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
