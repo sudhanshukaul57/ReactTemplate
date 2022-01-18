@@ -22,10 +22,11 @@ class RastervizDetails extends React.Component{
     submitLabels = async () =>{
         const endPoint = "http://127.0.0.1:5000/satlab/label"
         const requestBody = {}
-        //Uncomment below code
-        // const labelDetails = await axios.post(
-        //     endPoint, requestBody
-        // )
+        // Uncomment below code
+        const labelDetails = await axios.post(
+            endPoint, requestBody
+        )
+        console.log("labels are :", labelDetails)
         console.log("Submit button clicked")
         this.setState({
             displayMap: true

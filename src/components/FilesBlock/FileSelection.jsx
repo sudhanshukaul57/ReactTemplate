@@ -22,11 +22,13 @@ class FileSelection extends React.Component{
     }
 
     onPathSubmit =  async () =>{
+
+        console.log("Search value is", this.setState.path)
+
         const endPoint = "http://127.0.0.1:5000/satlab/load"
         const requestBody = {
-            "path": this.state.searchValue
+            "path": this.state.path
         }
-        
         const fileDetails = await axios.post(
             endPoint, requestBody
         )
@@ -34,9 +36,12 @@ class FileSelection extends React.Component{
     }
 
     getInputValue = (event, {value}) => {
+       // console.log(value)
         this.setState({
           path: value
         })
+
+        
     }
 
     render(){
