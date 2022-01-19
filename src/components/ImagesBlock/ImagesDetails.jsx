@@ -7,6 +7,8 @@ import {
     Image,
     Grid
   } from "semantic-ui-react"; 
+
+import "./imageDetails.css";
 /* eslint import/no-webpack-loader-syntax: off */
 // const src = '../../../public/logo192.png'
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkaGFuc2h1a2F1bDU3IiwiYSI6ImNreWhzbTRhMzFjbHozM3Focnp1cTlibDkifQ.OVdwiLZeI_LFgzNsBliIMA';  
@@ -78,7 +80,7 @@ class ImagesDetails extends React.Component{
             //     <div ref={this.mapContainer4} className="map-container" />
             // </div>
             <Grid columns={2} divided block>
-                <Grid.Row>
+                <Grid.Row id="row_image1">
                     <Grid.Column>
                         <div ref={this.mapContainer1} className="map-container" />
                     </Grid.Column>
@@ -86,7 +88,7 @@ class ImagesDetails extends React.Component{
                         <div ref={this.mapContainer2} className="map-container" />
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
+                <Grid.Row id="row_image2">
                     <Grid.Column>
                         <div ref={this.mapContainer3} className="map-container" />
                     </Grid.Column>

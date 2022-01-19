@@ -38,6 +38,7 @@ class RastervizDetails extends React.Component{
             // <div>
             //     <ImagesDetails/>
             // </div>
+           
             <Grid columns={2} divided block>
                 <Grid.Row>
                     <Grid.Column>
@@ -47,8 +48,8 @@ class RastervizDetails extends React.Component{
                         <LabelDetails/>
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row centered>
-                        <Button color="blue" onClick={this.submitLabels}>Label Images</Button>
+                <Grid.Row id="row1" centered>
+                        <Button inverted color="green" onClick={this.submitLabels}>Label Images</Button>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>

@@ -7,6 +7,7 @@ import {
     Checkbox
   } from "semantic-ui-react"; 
 import axios from "axios";
+import "./label.css";
 
 class LabelDetails extends React.Component{
 
@@ -46,10 +47,10 @@ class LabelDetails extends React.Component{
     }
     render(){
         return (
-            <div>
+            <div id="functions">
                 <Grid divided="vertically">
                     <Grid.Row columns={2}>
-                        <Grid.Column>
+                        <Grid.Column >
                                 <Label> Spatial Labeling Functions:</Label>
                         </Grid.Column>
                         <Grid.Column>

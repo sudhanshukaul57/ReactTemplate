@@ -1,0 +1,21 @@
+#files {
+    background-color: rgb(238, 235, 235);
+    height: 140%;
+    /* width:100%; */
+    /* border-style: groove; */
+    margin-top: 40px;
+    border-radius: 10px;
+    margin-left: 20px;
+    /* border-color: black; */
+}
+
+#text {
+    margin-top: 60px;
+    margin-left: 50%;
+}
+
+#button1 {
+    margin-top: 60px;
+    
+    /* margin-left: 50%; */
+}
