@@ -14,6 +14,11 @@ class GraphDetails extends React.Component{
         super(props);
     }
     render(){
+      console.log("Label Details inside Graph Component: ", this.props.labelDetails)
+      let labelDetails = this.props.labelDetails.data
+      console.log("Rendered value: ", labelDetails)
+      console.log("Id array value is ", labelDetails.data[0])
+      console.log("Id value is ", labelDetails.data[0].ID)
         return (
             // <div>
             //     <Image.Group size='small'>
@@ -39,19 +44,24 @@ class GraphDetails extends React.Component{
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
+        <Table.Cell>{labelDetails.data[0].ID}</Table.Cell>
+        <Table.Cell>{labelDetails.data[0].Geom}</Table.Cell>
+        <Table.Cell>{labelDetails.data[0].Label}</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
+        <Table.Cell>{labelDetails.data[1].ID}</Table.Cell>
+        <Table.Cell>{labelDetails.data[1].Geom}</Table.Cell>
+        <Table.Cell>{labelDetails.data[1].Label}</Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
+        <Table.Cell>{labelDetails.data[2].ID}</Table.Cell>
+        <Table.Cell>{labelDetails.data[2].Geom}</Table.Cell>
+        <Table.Cell>{labelDetails.data[2].Label}</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>{labelDetails.data[3].ID}</Table.Cell>
+        <Table.Cell>{labelDetails.data[3].Geom}</Table.Cell>
+        <Table.Cell>{labelDetails.data[3].Label}</Table.Cell>
       </Table.Row>
     </Table.Body>
 

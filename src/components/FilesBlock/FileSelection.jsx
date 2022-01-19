@@ -34,6 +34,7 @@ class FileSelection extends React.Component{
         //     endPoint, requestBody
         // )
         console.log("Form submit clicked and updated path is ", this.state.path)
+        this.props.disableLabel()
     }
 
     getInputValue = (event, {value}) => {
