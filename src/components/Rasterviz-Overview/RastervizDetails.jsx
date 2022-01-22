@@ -19,7 +19,8 @@ class RastervizDetails extends React.Component{
             displayMap: false,
             labelDetails: {},
             labelDisabled: true,
-            loaderEnabled: false
+            loaderEnabled: false,
+            labelComponent: false
         }
     }
 
@@ -39,12 +40,21 @@ class RastervizDetails extends React.Component{
             displayMap: true,
             labelDetails: labelDetails,
             labelDisabled: true,
-            loaderEnabled: false
+            loaderEnabled: false,
+            labelComponent: false
         })
     }
     disableLabel = () => {
         this.setState({
-            labelDisabled: false
+            labelDisabled: false,
+            labelComponent: true
+        })
+    }
+
+    enableImageComponent = () => {
+        this.setState({
+            labelComponent: false,
+            displayMap: true
         })
     }
     render(){
@@ -52,29 +62,31 @@ class RastervizDetails extends React.Component{
             // <div>
             //     <ImagesDetails/>
             // </div>
-           
-            <Grid columns={2} divided block>
-                <Grid.Row>
-                    <Grid.Column>
-                        <FileSelection disableLabel={this.disableLabel}/>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <LabelDetails/>
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row id="row1" centered>
-                        {(!this.state.loaderEnabled && <Button inverted color="green" onClick={this.submitLabels} disabled={this.state.labelDisabled}>Label Images</Button>) || (this.state.loaderEnabled && 
-                            <Loader active inline='centered' >Preparing Files</Loader>)}
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
-                        {this.state.displayMap && <ImagesDetails/>}
-                    </Grid.Column>
-                    <Grid.Column>
-                        {this.state.displayMap && <GraphDetails labelDetails={this.state.labelDetails}/>}
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+           <div>
+               {(this.state.labelDisabled &&  <FileSelection disableLabel={this.disableLabel}/>) || (this.state.labelComponent && <LabelDetails enableImages={this.enableImageComponent}/>) || (this.state.displayMap && <ImagesDetails/> )}
+           </div>
+            // <Grid columns={2} divided block>
+            //     <Grid.Row>
+            //         <Grid.Column>
+            //             <FileSelection disableLabel={this.disableLabel}/>
+            //         </Grid.Column>
+            //         <Grid.Column>
+            //             <LabelDetails/>
+            //         </Grid.Column>
+            //     </Grid.Row>
+            //     <Grid.Row id="row1" centered>
+            //             {(!this.state.loaderEnabled && <Button inverted color="green" onClick={this.submitLabels} disabled={this.state.labelDisabled}>Label Images</Button>) || (this.state.loaderEnabled && 
+            //                 <Loader active inline='centered' >Preparing Files</Loader>)}
+            //     </Grid.Row>
+            //     <Grid.Row>
+            //         <Grid.Column>
+            //             {this.state.displayMap && <ImagesDetails/>}
+            //         </Grid.Column>
+            //         <Grid.Column>
+            //             {this.state.displayMap && <GraphDetails labelDetails={this.state.labelDetails}/>}
+            //         </Grid.Column>
+            //     </Grid.Row>
+            // </Grid>
         )
     }
 }

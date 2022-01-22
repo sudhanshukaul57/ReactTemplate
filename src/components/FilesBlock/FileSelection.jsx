@@ -30,9 +30,9 @@ class FileSelection extends React.Component{
         const requestBody = {
             "path": this.state.path
         }
-        const fileDetails = await axios.post(
-            endPoint, requestBody
-        )
+        // const fileDetails = await axios.post(
+        //     endPoint, requestBody
+        // )
         console.log("Form submit clicked and updated path is ", this.state.path)
         this.props.disableLabel()
     }
@@ -48,6 +48,9 @@ class FileSelection extends React.Component{
 
     render(){
         return (
+            // <div>
+            //     <input type ="file" name="file" directory="" webkitdirectory="" onChange={(e) => this.onChange(e)}/>
+            // </div>
             <div id="files">
                 <Grid divided="vertically">
                     <Grid.Row columns={2}>
