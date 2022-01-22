@@ -17,15 +17,15 @@ class ImagesDetails extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            lng1: 137.9150899566626,
-            lat1: 36.25956997955441,
-            lng2: 137.9150899566626,
-            lat2: 36.25956997955441,
-            lng3: 137.9150899566626,
-            lat3: 36.25956997955441,
-            lng4: 137.9150899566626,
-            lat4: 36.25956997955441,
-            zoom: 15,
+            lng1: -58.67970354687943,
+            lat1: -34.74364891186528,
+            lng2: -58.39012114479379,
+            lat2: -34.98389791149417,
+            lng3: -58.08367546403999,
+            lat3: -34.87448820924735,
+            lng4: -58.08130931527511,
+            lat4: -34.961072530951064,
+            zoom: 17,
             displayMap: false
         }
         this.mapContainer1 = React.createRef();
