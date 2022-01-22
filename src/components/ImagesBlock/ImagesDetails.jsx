@@ -5,8 +5,14 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import {
     Divider,
     Image,
-    Grid
+    Grid,
+    Pagination
   } from "semantic-ui-react"; 
+
+import "./imageDetails.css";
+import ImagesDetails2 from "./ImagesDetails2";
+import ImagesDetails3 from "./ImagesDetails3";
+import ImagesDetails1 from "./ImagesDetails1";
 /* eslint import/no-webpack-loader-syntax: off */
 // const src = '../../../public/logo192.png'
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkaGFuc2h1a2F1bDU3IiwiYSI6ImNreWhzbTRhMzFjbHozM3Focnp1cTlibDkifQ.OVdwiLZeI_LFgzNsBliIMA';  
@@ -15,53 +21,48 @@ class ImagesDetails extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            lng1: 137.9150899566626,
-            lat1: 36.25956997955441,
-            lng2: 137.9150899566626,
-            lat2: 36.25956997955441,
-            lng3: 137.9150899566626,
-            lat3: 36.25956997955441,
-            lng4: 137.9150899566626,
-            lat4: 36.25956997955441,
-            zoom: 15,
-            displayMap: false
+            // lng1: -58.67970354687943,
+            // lat1: -34.74364891186528,
+            // lng2: -58.39012114479379,
+            // lat2: -34.98389791149417,
+            // lng3: -58.08367546403999,
+            // lat3: -34.87448820924735,
+            // lng4: -58.08130931527511,
+            // lat4: -34.961072530951064,
+            // zoom: 17,
+            displayMap: false,
+            imagesDetailsFlag1: true,
+            imagesDetailsFlag2: false,
+            imagesDetailsFlag3: false
         }
-        this.mapContainer1 = React.createRef();
-        this.mapContainer2 = React.createRef();
-        this.mapContainer3 = React.createRef();
-        this.mapContainer4 = React.createRef();
     }
 
-    componentDidMount() {
-        const { lng1, lat1, lng2, lat2, lng3, lat3, lng4, lat4, zoom } = this.state;
-        const map1 = new mapboxgl.Map({
-        container: this.mapContainer1.current,
-        style: 'mapbox://styles/mapbox/satellite-v9',
-        center: [lng1, lat1],
-        zoom: zoom
-        });
-
-        const map2 = new mapboxgl.Map({
-            container: this.mapContainer2.current,
-            style: 'mapbox://styles/mapbox/satellite-v9',
-            center: [lng2, lat2],
-            zoom: zoom
-        });
-        const map3 = new mapboxgl.Map({
-            container: this.mapContainer3.current,
-            style: 'mapbox://styles/mapbox/satellite-v9',
-            center: [lng3, lat3],
-            zoom: zoom
-        });
-        const map4 = new mapboxgl.Map({
-            container: this.mapContainer4.current,
-            style: 'mapbox://styles/mapbox/satellite-v9',
-            center: [lng4, lat4],
-            zoom: zoom
-        });
-
+    onPageChange = (event, data) =>{
+        if(data.activePage == 1){
+            this.setState({
+                imagesDetailsFlag1: true,
+                imagesDetailsFlag2: false,
+                imagesDetailsFlag3: false
+            })
+            console.log("active page is 1")
+        }else if(data.activePage == 2){
+            this.setState({
+                imagesDetailsFlag1: false,
+                imagesDetailsFlag2: true,
+                imagesDetailsFlag3: false
+            })
+            console.log("active page is 2")
+        }else if(data.activePage == 3){
+            this.setState({
+                imagesDetailsFlag1: false,
+                imagesDetailsFlag2: false,
+                imagesDetailsFlag3: true
+            })
+            console.log("active page is 3")
+        }
+        console.log("event name is ", event)
+        console.log("data type is ", data)
     }
-
     render(){
 //         mapboxgl.accessToken = 'sk.eyJ1Ijoic2FnZ2FyMjQiLCJhIjoiY2t5YjQxMWZnMGJ1NzJ2b2wzbmIzbnc2YSJ9.g2-W6nPPJ1sWf1uy9CwFGQ';
 //         const map = new mapboxgl.Map({
@@ -77,24 +78,15 @@ class ImagesDetails extends React.Component{
             //     <div ref={this.mapContainer3} className="map-container" />
             //     <div ref={this.mapContainer4} className="map-container" />
             // </div>
-            <Grid columns={2} divided block>
+            <div>
                 <Grid.Row>
-                    <Grid.Column>
-                        <div ref={this.mapContainer1} className="map-container" />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div ref={this.mapContainer2} className="map-container" />
-                    </Grid.Column>
+                    {(this.state.imagesDetailsFlag1 && 
+                        <ImagesDetails1/>) || (this.state.imagesDetailsFlag2 && <ImagesDetails2/>) || (this.state.imagesDetailsFlag3 && <ImagesDetails3/>)}
                 </Grid.Row>
                 <Grid.Row>
-                    <Grid.Column>
-                        <div ref={this.mapContainer3} className="map-container" />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div ref={this.mapContainer4} className="map-container" />
-                    </Grid.Column>
+                    <Pagination defaultActivePage={1} totalPages={3} onPageChange={this.onPageChange}/>
                 </Grid.Row>
-            </Grid>
+            </div>
             // <div>
             //     <Image.Group size='small'>
             //         <Image src={src} />

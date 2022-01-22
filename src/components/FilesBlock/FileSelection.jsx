@@ -6,6 +6,7 @@ import {
     Input
   } from "semantic-ui-react"; 
 import axios from "axios";
+import "./files.css";
 
 class FileSelection extends React.Component{
 
@@ -22,40 +23,49 @@ class FileSelection extends React.Component{
     }
 
     onPathSubmit =  async () =>{
+
+        console.log("Search value is", this.setState.path)
+
         const endPoint = "http://127.0.0.1:5000/satlab/load"
         const requestBody = {
-            "path": this.state.searchValue
+            "path": this.state.path
         }
-        
-        const fileDetails = await axios.post(
-            endPoint, requestBody
-        )
+        // const fileDetails = await axios.post(
+        //     endPoint, requestBody
+        // )
         console.log("Form submit clicked and updated path is ", this.state.path)
+        this.props.disableLabel()
     }
 
     getInputValue = (event, {value}) => {
+       // console.log(value)
         this.setState({
           path: value
         })
+
+        
     }
 
     render(){
         return (
-            <div>
+            // <div>
+            //     <input type ="file" name="file" directory="" webkitdirectory="" onChange={(e) => this.onChange(e)}/>
+            // </div>
+            <div id="files">
                 <Grid divided="vertically">
                     <Grid.Row columns={2}>
                         {/* <Grid.Column>
                             <Label>Enter Path</Label>   
                         </Grid.Column> */}
                         <Grid.Column>
-                            <Input style={{ width:"300px" }} focus placeholder='Enter Path' onChange={this.getInputValue} />
+                            <Input id="text" style={{ width:"300px" }} focus placeholder='Enter Path' onChange={this.getInputValue} />
                                 {/* <Button  color="blue" onClick={this.getEthDetails}>Choose File</Button> */}
                         </Grid.Column>
                         {/* <div>
                             <input type ="file" name="file" directory="" webkitdirectory="" onChange={(e) => this.onChange(e)}/>
                         </div> */}
                         <Grid.Column>
-                            <Button   onClick={this.onPathSubmit}>Submit</Button>   
+                            <Button id="button1" inverted color="blue"   onClick={this.onPathSubmit}>Submit</Button>   
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
