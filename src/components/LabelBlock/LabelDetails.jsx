@@ -103,8 +103,8 @@ class LabelDetails extends React.Component{
 
         for(let spatialKey in spatialServerMap){
             let innerList = []
-            innerList.push(parseInt(spatialKey))
-            innerList.push(parseInt(spatialServerMap[spatialKey]))
+            innerList.push(parseFloat(spatialKey))
+            innerList.push(parseFloat(spatialServerMap[spatialKey]))
             spatialServerList.push(innerList)
         }
 
@@ -112,8 +112,8 @@ class LabelDetails extends React.Component{
 
         for(let texturalKey in texturalServerMap){
             let innerList = []
-            innerList.push(parseInt(texturalKey))
-            innerList.push(parseInt(texturalServerMap[texturalKey]))
+            innerList.push(parseFloat(texturalKey))
+            innerList.push(parseFloat(texturalServerMap[texturalKey]))
             texturalServerList.push(innerList)
         }
 
