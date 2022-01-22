@@ -1,6 +1,6 @@
 #files {
     background-color: rgb(238, 235, 235);
-    height: 140%;
+    height:900px;
     /* width:100%; */
     /* border-style: groove; */
     margin-top: 40px;
@@ -18,4 +18,44 @@
     margin-top: 60px;
     
     /* margin-left: 50%; */
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: rgba(87, 175, 226, 0.979);
+    background-color: rgb(238, 235, 235);
+    display: inline-block;
+    border-radius: 5px;
+    border-color: rgba(87, 175, 226, 0.979);;
+    border-style:solid;
+    text-align:end;
+    
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: white;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+    font-size: 20px;
+    width: 150px;
+    height: 50px;
+    font-style:initial;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-left: 300px;
+    text-align: center;
+    
 }

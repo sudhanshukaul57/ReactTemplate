@@ -14,25 +14,25 @@ import axios from "axios";
 import "./label.css";
 
 const spatialOptions = [
-    { key: 'Spatial1', description: 'Label 1', value: '1' },
-    { key: 'Spatial2', description: 'Label 2', value: '2' },
-    { key: 'Spatial3', description: 'Label 3', value: '3' },
-    { key: 'Spatial4', description: 'Label 4', value: '4' },
-    { key: 'Spatial5', description: 'Label 5', value: '5' },
-    { key: 'Spatial6', description: 'Label 6', value: '6' },
-    { key: 'Spatial7', description: 'Label 7', value: '7' },
-    { key: 'Spatial8', description: 'Label 8', value: '8' },
-    { key: 'Spatial9', description: 'Label 9', value: '9' },
-    { key: 'Spatial10', description: 'Label 10', value: '10' }
+    { key: 'Spatial1', description: 'Hospital', value: '1' },
+    { key: 'Spatial2', description: 'Shopping Malls', value: '2' },
+    { key: 'Spatial3', description: 'Schools', value: '3' },
+    { key: 'Spatial4', description: 'Waste Disposal', value: '4' },
+    { key: 'Spatial5', description: 'Forests', value: '5' },
+    { key: 'Spatial6', description: 'Powerlines', value: '6' },
+    { key: 'Spatial7', description: 'Residential Houses', value: '7' },
+    { key: 'Spatial8', description: 'Roads', value: '8' },
+    { key: 'Spatial9', description: 'Drinking Water', value: '9' },
+    { key: 'Spatial10', description: 'Grasslands', value: '10' }
 ]
 
 const texturalOptions = [
-    { key: 'Textural1', description: 'Label 1', value: '1' },
-    { key: 'Textural2', description: 'Label 2', value: '2' },
-    { key: 'Textural3', description: 'Label 3', value: '3' },
-    { key: 'Textural4', description: 'Label 4', value: '4' },
-    { key: 'Textural5', description: 'Label 5', value: '5' },
-    { key: 'Textural6', description: 'Label 6', value: '6' }
+    { key: 'Textural1', description: 'Contrast', value: '1' },
+    { key: 'Textural2', description: 'Dissimilairty', value: '2' },
+    { key: 'Textural3', description: 'Homogeneity', value: '3' },
+    { key: 'Textural4', description: 'Energy', value: '4' },
+    { key: 'Textural5', description: 'Correlation', value: '5' },
+    { key: 'Textural6', description: 'ASM', value: '6' }
 ]
 class LabelDetails extends React.Component{
 
@@ -93,7 +93,7 @@ class LabelDetails extends React.Component{
             labelEnabled: false
         })
         const endPoint = "http://127.0.0.1:5000/satlab/label"
-        const requestBody = {}
+        // const requestBody = {}
         let spatialServerMap = this.state.spatialServerMap
         let texturalServerMap = this.state.texturalServerMap
 
@@ -103,7 +103,7 @@ class LabelDetails extends React.Component{
 
         for(let spatialKey in spatialServerMap){
             let innerList = []
-            innerList.push(parseFloat(spatialKey))
+            innerList.push(parseInt(spatialKey))
             innerList.push(parseFloat(spatialServerMap[spatialKey]))
             spatialServerList.push(innerList)
         }
@@ -112,7 +112,7 @@ class LabelDetails extends React.Component{
 
         for(let texturalKey in texturalServerMap){
             let innerList = []
-            innerList.push(parseFloat(texturalKey))
+            innerList.push(parseInt(texturalKey)+10)
             innerList.push(parseFloat(texturalServerMap[texturalKey]))
             texturalServerList.push(innerList)
         }
@@ -120,10 +120,17 @@ class LabelDetails extends React.Component{
         console.log("Spatial server list ", spatialServerList)
         console.log("Textural server list ", texturalServerList)
         // Uncomment below code
-        // const labelDetails = await axios.post(
-        //     endPoint, requestBody
-        // )
-        // console.log("labels are :", labelDetails)
+        let final_list = spatialServerList.concat(texturalServerList)
+        console.log("final list", final_list)
+
+        const requestBody = {
+
+            "lf_index":final_list
+        }
+        const labelDetails = await axios.post(
+            endPoint, requestBody
+        )
+        //
         console.log("Submit button clicked")
         this.setState({
             displayMap: true,
