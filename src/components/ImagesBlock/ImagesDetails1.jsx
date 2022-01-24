@@ -36,7 +36,16 @@ class ImagesDetails1 extends React.Component{
     }
 
     componentDidMount() {
-        const { lng1, lat1, lng2, lat2, lng3, lat3, lng4, lat4, zoom } = this.state;
+        let { lng1, lat1, lng2, lat2, lng3, lat3, lng4, lat4, zoom } = this.state;
+        let imageData = this.props.imageData
+        lng1 = imageData[0].Long
+        lat1 = imageData[0].Lat
+        lng2 = imageData[1].Long
+        lat2 = imageData[1].Lat
+        lng3 = imageData[2].Long
+        lat3 = imageData[2].Lat
+        lng4 = imageData[3].Long
+        lat4 = imageData[3].Lat
         const map1 = new mapboxgl.Map({
         container: this.mapContainer1.current,
         style: 'mapbox://styles/mapbox/satellite-v9',

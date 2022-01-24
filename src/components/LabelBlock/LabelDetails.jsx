@@ -14,7 +14,7 @@ import axios from "axios";
 import "./label.css";
 
 const spatialOptions = [
-    { key: 'Spatial1', description: 'Hospital', value: '1' },
+    { key: 'Shantanu key', description: 'Hospital', value: '1' },
     { key: 'Spatial2', description: 'Shopping Malls', value: '2' },
     { key: 'Spatial3', description: 'Schools', value: '3' },
     { key: 'Spatial4', description: 'Waste Disposal', value: '4' },
@@ -130,6 +130,8 @@ class LabelDetails extends React.Component{
         const labelDetails = await axios.post(
             endPoint, requestBody
         )
+
+        this.props.setImageData(labelDetails)
         //
         console.log("Submit button clicked")
         this.setState({
@@ -461,9 +463,14 @@ class LabelDetails extends React.Component{
             closeFunction = this.closeSpatialeRow10
             getInputValue = this.getSpatialInputValue10
         }
+        let key = spatialOptions.filter(function(item) {
+            if(item.value == value){
+                return item.key
+            }
+         })
         let gridContent = <Grid columns={3} key={spatialId}>
         <Grid.Column>
-            <Popup content={value} trigger={<Button  color='blue'>{event.target.innerText}</Button>} />
+            <Popup content={key[0].key} trigger={<Button  color='blue'>{event.target.innerText}</Button>} />
         </Grid.Column>
         <Grid.Column>
             <Input style={{ width:"200px" }} focus placeholder='Add Threshold' onChange={getInputValue} id={spatialId}/>
@@ -671,9 +678,15 @@ class LabelDetails extends React.Component{
             closeFunction = this.closeTexturalRow6
             getInputValue = this.getTexturalInputValue6
         }
+
+        let key = spatialOptions.filter(function(item) {
+            if(item.value == value){
+                return item.key
+            }
+         })
         let gridContent = <Grid columns={3} key={texturalId}>
         <Grid.Column>
-            <Popup content={value} trigger={<Button  color='blue'>{event.target.innerText}</Button>} />
+            <Popup content={key[0].key} trigger={<Button  color='blue'>{event.target.innerText}</Button>} />
         </Grid.Column>
         <Grid.Column>
             <Input style={{ width:"200px" }} focus placeholder='Add Threshold' onChange={getInputValue} id={texturalId}/>

@@ -20,7 +20,10 @@ class RastervizDetails extends React.Component{
             labelDetails: {},
             labelDisabled: true,
             loaderEnabled: false,
-            labelComponent: false
+            labelComponent: false,
+            imageDetails1: [],
+            imageDetails2: [],
+            imageDetails3: []
         }
     }
 
@@ -57,13 +60,35 @@ class RastervizDetails extends React.Component{
             displayMap: true
         })
     }
+
+    setImageData = (imageDetails) => {
+        let imageDetail = imageDetails.data.data
+        let imageDetails1 = []
+        let imageDetails2 = []
+        let imageDetails3 = []
+        for(let i=0; i<12;i++){
+            if(i<4){
+                imageDetails1.push(imageDetail[i])
+            }else if(i<8){
+                imageDetails2.push(imageDetail[i])
+            }else{
+                imageDetails3.push(imageDetail[i])
+            }
+        }
+        this.setState({
+            imageDetails1: imageDetails1,
+            imageDetails2: imageDetails2,
+            imageDetails3: imageDetails3
+        })
+    }
+
     render(){
         return (
             // <div>
             //     <ImagesDetails/>
             // </div>
            <div>
-               {(this.state.labelDisabled &&  <FileSelection disableLabel={this.disableLabel}/>) || (this.state.labelComponent && <LabelDetails enableImages={this.enableImageComponent}/>) || (this.state.displayMap && <ImagesDetails/> )}
+               {(this.state.labelDisabled &&  <FileSelection disableLabel={this.disableLabel}/>) || (this.state.labelComponent && <LabelDetails enableImages={this.enableImageComponent} setImageData={this.setImageData}/>) || (this.state.displayMap && <ImagesDetails  imageDetails1 = {this.state.imageDetails1} imageDetails2 = {this.state.imageDetails2} imageDetails3 = {this.state.imageDetails3}/> )}
            </div>
             // <Grid columns={2} divided block>
             //     <Grid.Row>

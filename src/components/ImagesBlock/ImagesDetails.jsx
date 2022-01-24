@@ -64,6 +64,10 @@ class ImagesDetails extends React.Component{
         console.log("data type is ", data)
     }
     render(){
+
+        let imageDetails1 = this.props.imageDetails1
+        let imageDetails2 = this.props.imageDetails2
+        let imageDetails3 = this.props.imageDetails3
 //         mapboxgl.accessToken = 'sk.eyJ1Ijoic2FnZ2FyMjQiLCJhIjoiY2t5YjQxMWZnMGJ1NzJ2b2wzbmIzbnc2YSJ9.g2-W6nPPJ1sWf1uy9CwFGQ';
 //         const map = new mapboxgl.Map({
 //         container: 'map', // container ID
@@ -81,7 +85,7 @@ class ImagesDetails extends React.Component{
             <div>
                 <Grid.Row>
                     {(this.state.imagesDetailsFlag1 && 
-                        <ImagesDetails1/>) || (this.state.imagesDetailsFlag2 && <ImagesDetails2/>) || (this.state.imagesDetailsFlag3 && <ImagesDetails3/>)}
+                        <ImagesDetails1 imageData={imageDetails1}/>) || (this.state.imagesDetailsFlag2 && <ImagesDetails2 imageData={imageDetails2}/>) || (this.state.imagesDetailsFlag3 && <ImagesDetails3 imageData={imageDetails3}/>)}
                 </Grid.Row>
                 <Grid.Row>
                     <Pagination defaultActivePage={1} totalPages={3} onPageChange={this.onPageChange}/>
