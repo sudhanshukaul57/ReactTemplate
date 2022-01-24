@@ -14,25 +14,25 @@ import axios from "axios";
 import "./label.css";
 
 const spatialOptions = [
-    { key: 'Shantanu key', description: 'Hospital', value: '1' },
-    { key: 'Spatial2', description: 'Shopping Malls', value: '2' },
-    { key: 'Spatial3', description: 'Schools', value: '3' },
-    { key: 'Spatial4', description: 'Waste Disposal', value: '4' },
-    { key: 'Spatial5', description: 'Forests', value: '5' },
-    { key: 'Spatial6', description: 'Powerlines', value: '6' },
-    { key: 'Spatial7', description: 'Residential Houses', value: '7' },
-    { key: 'Spatial8', description: 'Roads', value: '8' },
-    { key: 'Spatial9', description: 'Drinking Water', value: '9' },
-    { key: 'Spatial10', description: 'Grasslands', value: '10' }
+    { key: 'distance<threshold, NON-SLUM ELSE SLUM', description: 'Hospital', value: '1' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Shopping Malls', value: '2' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Schools', value: '3' },
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Waste Disposal', value: '4' },
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Forests', value: '5' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Powerlines', value: '6' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Residential Houses', value: '7' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Roads', value: '8' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Drinking Water', value: '9' },
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Grasslands', value: '10' }
 ]
 
 const texturalOptions = [
-    { key: 'Textural1', description: 'Contrast', value: '1' },
-    { key: 'Textural2', description: 'Dissimilairty', value: '2' },
-    { key: 'Textural3', description: 'Homogeneity', value: '3' },
-    { key: 'Textural4', description: 'Energy', value: '4' },
-    { key: 'Textural5', description: 'Correlation', value: '5' },
-    { key: 'Textural6', description: 'ASM', value: '6' }
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Contrast', value: '1' },
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Dissimilairty', value: '2' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Homogeneity', value: '3' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'Energy', value: '4' },
+    { key: 'distance<threshold SLUM ELSE NON-SLUM', description: 'Correlation', value: '5' },
+    { key: 'distance<threshold NON-SLUM ELSE SLUM', description: 'ASM', value: '6' }
 ]
 class LabelDetails extends React.Component{
 
