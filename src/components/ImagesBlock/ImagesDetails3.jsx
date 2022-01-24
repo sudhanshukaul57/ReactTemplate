@@ -6,7 +6,8 @@ import {
     Divider,
     Image,
     Grid,
-    Pagination
+    Pagination,
+    Label
   } from "semantic-ui-react"; 
 
 import "./imageDetails.css";
@@ -74,6 +75,36 @@ class ImagesDetails3 extends React.Component{
 
     }
     render(){
+
+        let imageData = this.props.imageData
+        let label1 = imageData[0].Label
+        let label2 = imageData[1].Label
+        let label3 = imageData[2].Label
+        let label4 = imageData[3].Label
+        
+        if(label1 == 0){
+            label1 = "Non Slum"
+        }else{
+            label1 = "Slum"
+        }
+
+        if(label2 == 0){
+            label2 = "Non Slum"
+        }else{
+            label2 = "Slum"
+        }
+
+        if(label3 == 0){
+            label3 = "Non Slum"
+        }else{
+            label3 = "Slum"
+        }
+
+        if(label4 == 0){
+            label4 = "Non Slum"
+        }else{
+            label4 = "Slum"
+        }
 //         mapboxgl.accessToken = 'sk.eyJ1Ijoic2FnZ2FyMjQiLCJhIjoiY2t5YjQxMWZnMGJ1NzJ2b2wzbmIzbnc2YSJ9.g2-W6nPPJ1sWf1uy9CwFGQ';
 //         const map = new mapboxgl.Map({
 //         container: 'map', // container ID
@@ -91,18 +122,46 @@ class ImagesDetails3 extends React.Component{
             <Grid columns={2} divided block>
                 <Grid.Row id="row_image1">
                     <Grid.Column>
-                        <div ref={this.mapContainer1} className="map-container" />
+                        <Grid columns={2}>
+                            <Grid.Column>
+                                <div ref={this.mapContainer1} className="map-container" />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Label>{label1}</Label>
+                            </Grid.Column>
+                        </Grid>
                     </Grid.Column>
                     <Grid.Column>
-                        <div ref={this.mapContainer2} className="map-container" />
+                        <Grid columns={2}>
+                            <Grid.Column>
+                                <div ref={this.mapContainer2} className="map-container" />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Label>{label2}</Label>
+                            </Grid.Column>
+                        </Grid>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row id="row_image2">
                     <Grid.Column>
-                        <div ref={this.mapContainer3} className="map-container" />
+                        <Grid columns={2}>
+                            <Grid.Column>
+                                <div ref={this.mapContainer3} className="map-container" />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Label>{label3}</Label>
+                            </Grid.Column>
+                        </Grid>
                     </Grid.Column>
                     <Grid.Column>
-                        <div ref={this.mapContainer4} className="map-container" />
+                        <Grid columns={2}>
+                            <Grid.Column>
+                                <div ref={this.mapContainer4} className="map-container" />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Label>{label4}</Label>
+                            </Grid.Column>
+                        </Grid>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
